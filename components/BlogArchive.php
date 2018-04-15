@@ -2,7 +2,7 @@
 
 namespace Graker\BlogArchive\Components;
 
-use Carbon\Carbon;
+use October\Rain\Argon\Argon as Carbon;
 use Graker\BlogArchive\Classes\ArchivePager;
 use Graker\BlogArchive\Classes\ArchiveTrait;
 use RainLab\Blog\Models\Category;
@@ -179,7 +179,6 @@ class BlogArchive extends \Cms\Classes\ComponentBase {
     ];
   }
 
-
   /**
    *
    * Returns pages list for category page selection (copied from blog plugin)
@@ -270,7 +269,7 @@ class BlogArchive extends \Cms\Classes\ComponentBase {
     $currentDateInRange = $current->between($first_date, Carbon::now(), true);
     return $currentDateInRange;    
   }
-
+  
 
   /**
    *

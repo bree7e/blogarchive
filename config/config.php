@@ -4,6 +4,6 @@
  */
 
 return [
-  'setLocaleForCarbon' => TRUE,
+  'setLocaleForCarbon' => FALSE,
   'addTypofilterToMarkdown' => TRUE,
 ];

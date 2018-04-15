@@ -6,7 +6,7 @@
 
 namespace Graker\BlogArchive\Classes;
 
-use Carbon\Carbon;
+use October\Rain\Argon\Argon as Carbon;
 use Cms\Classes\Controller;
 
 class ArchivePager

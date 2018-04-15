@@ -6,7 +6,7 @@
 namespace Graker\BlogArchive\Classes;
 
 use RainLab\Blog\Models\Post as BlogPost;
-use Carbon\Carbon;
+use October\Rain\Argon\Argon as Carbon;
 
 trait ArchiveTrait
 {
