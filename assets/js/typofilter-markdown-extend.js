@@ -9,7 +9,7 @@
 
     var button = {
       label: 'Typofilter',
-      icon: 'magic',
+      icon: 'quote-left',
       insertAfter: 'formatting',
       action: 'runTypofilter',
       template: '$1'
