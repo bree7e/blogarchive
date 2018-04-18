@@ -279,8 +279,7 @@ class BlogArchive extends \Cms\Classes\ComponentBase {
    * @return string
    */
   protected function getMonthName($date = '') {
-    $d = new Carbon($date);
-    return $d->formatLocalized('%B');
+    return $date->format('F');
   }
 
 
