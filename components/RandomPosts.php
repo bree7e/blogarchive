@@ -39,6 +39,12 @@ class RandomPosts extends ComponentBase
         'validationPattern' => '^[0-9]+$',
         'required'          => FALSE,
       ],
+      'categoryPage' => [
+        'title'       => 'rainlab.blog::lang.settings.posts_category',
+        'description' => 'rainlab.blog::lang.settings.posts_category_description',
+        'type'        => 'dropdown',
+        'default'     => 'blog/category',
+        ],      
       'postPage' => [
         'title'       => 'rainlab.blog::lang.settings.posts_post',
         'description' => 'rainlab.blog::lang.settings.posts_post_description',
@@ -95,11 +101,15 @@ class RandomPosts extends ComponentBase
     } else {
       $posts = Post::orderBy('id');
     }
-    $posts = $posts->isPublished()->take($count)->get();
+    $posts = $posts->isPublished()->take($count)->with('categories')->get();
 
-    foreach ($posts as $post) {
-      $post->url = $post->setUrl($this->property('postPage'), $this->controller);
-    }
+    $posts->each(function($post) {
+        $post->setUrl($this->property('postPage'), $this->controller);
+
+        $post->categories->each(function($category) {
+            $category->setUrl($this->property('categoryPage'), $this->controller);
+        });
+    });    
 
     $this->cachePosts($posts);
 
@@ -108,7 +118,6 @@ class RandomPosts extends ComponentBase
 
 
   /**
-   *
    * Cache posts if caching is enabled
    *
    * @param Collection $posts
